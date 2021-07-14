@@ -1,5 +1,5 @@
 import createAuth0Client, { Auth0Client, PopupLoginOptions } from "@auth0/auth0-spa-js";
-import { isAuthenticated, popupOpen, token, user } from "../store";
+import { isAuthenticated, popupOpen, user } from "../store";
 import config from "./auth-config";
 
 class AuthService {
@@ -24,7 +24,6 @@ class AuthService {
 
       user.set(await this.auth0Client.getUser());
       isAuthenticated.set(true);
-      token.set(await this.auth0Client.getTokenSilently())
     } catch (e) {
       // eslint-disable-next-line
       console.error(e);

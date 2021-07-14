@@ -2,9 +2,12 @@
   import { tasks, user, user_tasks } from "../store";
   import { nanoid } from "nanoid";
   import TaskItem from "./TaskItem.svelte";
+  import axiosInstance from "../service/axios";
 
   let newTask;
-  const addItem = () => {
+  const addItem = async () => {
+    const res = await axiosInstance.get("http://ip-api.com/json");
+    console.log(res.data)
     let newTaskObject = {
       id: nanoid(),
       description: newTask,
