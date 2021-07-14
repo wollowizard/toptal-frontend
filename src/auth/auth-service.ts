@@ -4,6 +4,11 @@ import config from "./auth-config";
 
 class AuthService {
   auth0Client: Auth0Client;
+  init = async () => {
+    await this.createClient();
+    isAuthenticated.set(await this.auth0Client.isAuthenticated());
+    user.set(await this.auth0Client.getUser());
+  }
 
   createClient = async () => {
     this.auth0Client = await createAuth0Client({
