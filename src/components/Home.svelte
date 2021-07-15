@@ -6,7 +6,7 @@
 
   let newTask;
   const addItem = async () => {
-    const res = await axiosInstance.get("http://ip-api.com/json");
+    const res = await axiosInstance.get("/api/secured");
     console.log(res.data)
     let newTaskObject = {
       id: nanoid(),

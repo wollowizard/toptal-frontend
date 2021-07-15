@@ -1,15 +1,13 @@
 import axios from "axios";
-import { user } from "../store";
-import { get } from 'svelte/store';
 import authService from "../auth/auth-service";
 
 const axiosInstance = axios.create();
 
 axiosInstance.interceptors.request.use(async config => {
-    let theToken = await authService.auth0Client.getTokenSilently()
+    let token = await authService.auth0Client.getTokenSilently()
 
     config.headers = {
-      'Authorization': `Bearer ${theToken}`,
+      'Authorization': `Bearer ${token}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }

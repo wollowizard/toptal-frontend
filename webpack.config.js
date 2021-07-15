@@ -66,6 +66,13 @@ module.exports = {
 	],
 	devtool: prod ? false : 'source-map',
 	devServer: {
-		hot: true
+		hot: true,
+		port: 3000,
+		proxy: {
+			'/api': {
+				target: 'http://localhost:8080',
+				pathRewrite: { '^/api': '' },
+			},
+		},
 	}
 };
