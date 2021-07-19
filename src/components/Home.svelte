@@ -1,22 +1,22 @@
 <script lang="ts">
-  import { tasks, user, user_tasks } from "../store";
+  import { user } from "../auth/auth-store";
+  import tasks from "../tasks/tasks-store"
   import { nanoid } from "nanoid";
   import TaskItem from "./TaskItem.svelte";
-  import axiosInstance from "../service/axios";
+  import { onMount } from "svelte";
+  import taskService from "../tasks/task-service"
 
+  onMount(() => {
+    taskService.get();
+  })
   let newTask;
   const addItem = async () => {
-    const res = await axiosInstance.get("/api/secured");
-    console.log(res.data)
-    let newTaskObject = {
+    taskService.add({
       id: nanoid(),
       description: newTask,
       completed: false,
       user: $user.email
-    };
-    console.log(newTaskObject);
-    let updatedTasks = [...$tasks, newTaskObject];
-    tasks.set(updatedTasks);
+    }).then(() => taskService.get())
     newTask = "";
   }
 </script>
@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-md-6">
         <ul class="list-group">
-          {#each $user_tasks as item (item.id)}
+          {#each $tasks as item (item.id)}
             <TaskItem task={item}/>
           {/each}
         </ul>

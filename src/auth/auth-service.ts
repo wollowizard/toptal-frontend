@@ -1,5 +1,5 @@
 import createAuth0Client, { Auth0Client, PopupLoginOptions } from "@auth0/auth0-spa-js";
-import { isAuthenticated, popupOpen, user } from "../store";
+import { isAuthenticated, popupOpen, user } from "../auth/auth-store";
 import config from "./auth-config";
 
 class AuthService {

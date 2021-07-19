@@ -6,7 +6,7 @@
   import Home from "./components/Home.svelte"
 
   import { Route, Router } from "svelte-routing";
-  import { isAuthenticated } from "./store";
+  import { isAuthenticated } from "./auth/auth-store";
 
   onMount(async () => authService.init());
 

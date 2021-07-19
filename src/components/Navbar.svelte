@@ -1,6 +1,6 @@
 <!-- App Bar -->
 <script lang="ts">
-  import { isAuthenticated, user } from "../store";
+  import { isAuthenticated, user } from "../auth/auth-store";
   import authService from "../auth/auth-service";
   import { link } from "svelte-routing";
 </script>
