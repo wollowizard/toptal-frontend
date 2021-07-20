@@ -12,10 +12,8 @@
   let newTask;
   const addItem = async () => {
     taskService.add({
-      id: nanoid(),
       description: newTask,
-      completed: false,
-      user: $user.email
+      completed: false
     }).then(() => taskService.get())
     newTask = "";
   }
@@ -26,7 +24,7 @@
     <div class="row">
       <div class="col-md-6">
         <ul class="list-group">
-          {#each $tasks as item (item.id)}
+          {#each $tasks as item (item._id)}
             <TaskItem task={item}/>
           {/each}
         </ul>

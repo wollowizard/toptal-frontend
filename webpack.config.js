@@ -69,9 +69,9 @@ module.exports = {
 		hot: true,
 		port: 3000,
 		proxy: {
-			'/api': {
+			'/rest': {
 				target: 'http://localhost:8080',
-				pathRewrite: { '^/api': '' },
+				//pathRewrite: { '^/api': '' },
 			},
 		},
 	}

@@ -7,8 +7,8 @@ export default {
   ...tasks,
   add: (task: Task) => tasks.update(old => [task, ...old]),
   setCompleted: (id: string, isCompleted: boolean) =>
-    tasks.update(old => old.map(e => e.id === id ? {...e, completed: isCompleted} : e)),
-  toggleCompleted: (id: string) => tasks.update(old => old.map(e => e.id === id ? {
+    tasks.update(old => old.map(e => e._id === id ? {...e, completed: isCompleted} : e)),
+  toggleCompleted: (id: string) => tasks.update(old => old.map(e => e._id === id ? {
     ...e,
     completed: !e.completed
   } : e))

@@ -1,6 +1,6 @@
 export interface Task {
-  id: string,
+  _id?: string,
   description: string,
   completed: boolean,
-  user: string
+  createdBy?: { sub: string, email?: string, name?: string }
 }
